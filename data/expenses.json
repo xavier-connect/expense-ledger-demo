@@ -1,13 +1,40 @@
 {
-  "exportedAt": "2026-09-20T17:10:28.894Z",
+  "exportedAt": "2026-09-20T17:12:56.177Z",
   "chainInfo": {
-    "height": 9,
-    "currentBlockHash": "tecy2BINZtKkk2HiO9DgSmxzou0kp/FWl9Y+YWro08w=",
-    "previousBlockHash": "GpFTKhZKMYlarbFq1bNN62EtErHWu3Ld+bi5en30u/c="
+    "height": 10,
+    "currentBlockHash": "jgSp2jZ3/u38fJ/LYfc8hMbmQZkOjDpzVs1fLbia8W4=",
+    "previousBlockHash": "tecy2BINZtKkk2HiO9DgSmxzou0kp/FWl9Y+YWro08w="
   },
-  "totalBaisa": 850000000,
-  "expenseCount": 3,
+  "totalBaisa": 870000000,
+  "expenseCount": 4,
   "expenses": [
+    {
+      "AmountBaisa": 20000000,
+      "Category": "Marketing & Sales",
+      "CategoryOther": "",
+      "Currency": "OMR",
+      "Date": "2026-09-18",
+      "Description": "Marketing",
+      "DocumentHash": "",
+      "ID": "1f1255fa-db02-4e62-a2fc-9b39cd70c156",
+      "RecordedBy": "x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com",
+      "ReversalOf": "",
+      "Timestamp": "2026-09-20T17:12:20.000Z",
+      "Vendor": "MOC",
+      "docType": "expense",
+      "RecordedByFriendly": "financeofficer1",
+      "History": [
+        {
+          "txId": "862547a7fce03581d28179cd827464c91c107229a673cb6eaacb01dd92d0d44d",
+          "timestamp": {
+            "seconds": 1789924340,
+            "nanos": 123000000
+          },
+          "isDelete": false,
+          "value": "{\"docType\":\"expense\",\"ID\":\"1f1255fa-db02-4e62-a2fc-9b39cd70c156\",\"Date\":\"2026-09-18\",\"Category\":\"Marketing & Sales\",\"CategoryOther\":\"\",\"AmountBaisa\":20000000,\"Currency\":\"OMR\",\"Vendor\":\"MOC\",\"Description\":\"Marketing\",\"DocumentHash\":\"\",\"RecordedBy\":\"x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com\",\"Timestamp\":\"2026-09-20T17:12:20.000Z\",\"ReversalOf\":\"\"}"
+        }
+      ]
+    },
     {
       "AmountBaisa": 300000000,
       "Category": "Design & Engineering",
