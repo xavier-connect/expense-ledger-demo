@@ -1,0 +1,66 @@
+{
+  "exportedAt": "2026-09-20T16:47:26.284Z",
+  "chainInfo": {
+    "height": 8,
+    "currentBlockHash": "GpFTKhZKMYlarbFq1bNN62EtErHWu3Ld+bi5en30u/c=",
+    "previousBlockHash": "x6OUibhkwBiJ+SB9/JBwxTPgHBe+eQqghLx3mz6eAn0="
+  },
+  "totalBaisa": 550000000,
+  "expenseCount": 2,
+  "expenses": [
+    {
+      "AmountBaisa": 50000000,
+      "Category": "Permits & Licensing",
+      "CategoryOther": "",
+      "Currency": "OMR",
+      "Date": "2026-09-18",
+      "Description": "Permits",
+      "DocumentHash": "",
+      "ID": "862b0190-5835-4174-8a09-f63cd7caa6a5",
+      "RecordedBy": "x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com",
+      "ReversalOf": "",
+      "Timestamp": "2026-09-20T16:37:37.000Z",
+      "Vendor": "Ministry of Labour",
+      "docType": "expense",
+      "RecordedByFriendly": "financeofficer1",
+      "History": [
+        {
+          "txId": "de122b9e1cda4c0c3ff38e0ad6f029b5ae50f5545c93677c61b3148c2882fbfd",
+          "timestamp": {
+            "seconds": 1789922257,
+            "nanos": 376000000
+          },
+          "isDelete": false,
+          "value": "{\"docType\":\"expense\",\"ID\":\"862b0190-5835-4174-8a09-f63cd7caa6a5\",\"Date\":\"2026-09-18\",\"Category\":\"Permits & Licensing\",\"CategoryOther\":\"\",\"AmountBaisa\":50000000,\"Currency\":\"OMR\",\"Vendor\":\"Ministry of Labour\",\"Description\":\"Permits\",\"DocumentHash\":\"\",\"RecordedBy\":\"x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com\",\"Timestamp\":\"2026-09-20T16:37:37.000Z\",\"ReversalOf\":\"\"}"
+        }
+      ]
+    },
+    {
+      "AmountBaisa": 500000000,
+      "Category": "Land Acquisition",
+      "CategoryOther": "",
+      "Currency": "OMR",
+      "Date": "2026-09-17",
+      "Description": "Land",
+      "DocumentHash": "",
+      "ID": "608c100d-48ce-472d-96d3-654b1edead37",
+      "RecordedBy": "x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com",
+      "ReversalOf": "",
+      "Timestamp": "2026-09-20T16:37:03.000Z",
+      "Vendor": "Ministry of Housing",
+      "docType": "expense",
+      "RecordedByFriendly": "financeofficer1",
+      "History": [
+        {
+          "txId": "d8bde7093a30f41d4a5815552c72b730e9d91b6d0f683221f54ccbcde4210574",
+          "timestamp": {
+            "seconds": 1789922223,
+            "nanos": 627000000
+          },
+          "isDelete": false,
+          "value": "{\"docType\":\"expense\",\"ID\":\"608c100d-48ce-472d-96d3-654b1edead37\",\"Date\":\"2026-09-17\",\"Category\":\"Land Acquisition\",\"CategoryOther\":\"\",\"AmountBaisa\":500000000,\"Currency\":\"OMR\",\"Vendor\":\"Ministry of Housing\",\"Description\":\"Land\",\"DocumentHash\":\"\",\"RecordedBy\":\"x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com\",\"Timestamp\":\"2026-09-20T16:37:03.000Z\",\"ReversalOf\":\"\"}"
+        }
+      ]
+    }
+  ]
+}

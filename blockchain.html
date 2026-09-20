@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Blockchain Info - Demo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html" class="brand">Expense<span>Ledger</span></a>
+    <div class="session-info">
+      <span class="role-badge">Investor View (Demo)</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to all expenses</a>
+
+    <div class="card">
+      <h1>Blockchain Ledger Status</h1>
+      <p class="note">
+        Snapshot of the Hyperledger Fabric channel status as of the last export.
+        Every block is cryptographically linked to the one before it.
+      </p>
+      <div id="content">Loading...</div>
+    </div>
+  </div>
+
+  <script>
+    async function loadData() {
+      const res = await fetch('data/expenses.json');
+      const data = await res.json();
+      const c = data.chainInfo;
+
+      let html = '<div class="summary-row">';
+      html += '<div class="summary-box"><div class="summary-label">Block Height</div>' +
+        '<div class="summary-value">' + c.height + '</div></div>';
+      html += '<div class="summary-box"><div class="summary-label">Expense Entries</div>' +
+        '<div class="summary-value">' + data.expenseCount + '</div></div>';
+      html += '<div class="summary-box"><div class="summary-label">Status</div>' +
+        '<div class="summary-value" style="color:#1e7e34;">&#10003; Confirmed</div></div>';
+      html += '</div>';
+
+      html += '<table class="detail-table">';
+      html += '<tr><td>Current Block Hash</td><td class="mono">' + c.currentBlockHash + '</td></tr>';
+      html += '<tr><td>Previous Block Hash</td><td class="mono">' + c.previousBlockHash + '</td></tr>';
+      html += '<tr><td>Channel</td><td>expenseschannel</td></tr>';
+      html += '</table>';
+
+      html += '<p class="note" style="margin-top:20px;">Block height will typically be higher ' +
+        'than the expense entry count: it also includes network setup events such as channel ' +
+        'creation and chaincode deployment, in addition to every expense and correction recorded since.</p>';
+
+      document.getElementById('content').innerHTML = html;
+    }
+
+    loadData().catch(function(err) {
+      document.getElementById('content').innerHTML =
+        '<div class="alert alert-error">Failed to load: ' + err.message + '</div>';
+    });
+  </script>
+</body>
+</html>

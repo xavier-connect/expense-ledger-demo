@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Detail - Demo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html" class="brand">Expense<span>Ledger</span></a>
+    <div class="session-info">
+      <span class="role-badge">Investor View (Demo)</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to all expenses</a>
+
+    <div class="card" id="detail-card">
+      <h1>Expense Detail</h1>
+      <div id="detail-container">Loading...</div>
+    </div>
+
+    <div class="card" id="history-card" style="margin-top: 20px; display: none;">
+      <h2>Ledger History</h2>
+      <p class="note">Every write ever made to this entry. Exactly one entry confirms it has never been altered.</p>
+      <table id="history-table">
+        <tr><th>Transaction ID</th><th>Timestamp</th></tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function formatTimestamp(iso) {
+      const d = new Date(iso);
+      return d.toLocaleString('en-GB', {
+        year: 'numeric', month: 'short', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZoneName: 'short',
+      });
+    }
+
+    function formatHistoryTimestamp(ts) {
+      if (!ts || typeof ts.seconds !== 'number') return JSON.stringify(ts);
+      const d = new Date(ts.seconds * 1000);
+      return formatTimestamp(d.toISOString());
+    }
+
+    function friendlyIssuer(rawIdentity) {
+      const parts = rawIdentity.split('::');
+      const issuerDn = parts[2] || '';
+      const orgMatch = issuerDn.match(/O=([^,/]+)/);
+      const cnMatch = issuerDn.match(/CN=([^,/]+)/);
+      if (orgMatch && cnMatch) return orgMatch[1] + '/CN=' + cnMatch[1];
+      return issuerDn;
+    }
+
+    async function loadData() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      const res = await fetch('data/expenses.json');
+      const data = await res.json();
+      const expense = data.expenses.find(function(e) { return e.ID === id; });
+
+      if (!expense) {
+        document.getElementById('detail-container').innerHTML =
+          '<div class="alert alert-error">Expense not found in this snapshot.</div>';
+        return;
+      }
+
+      const category = expense.Category === 'Other' ? expense.CategoryOther : expense.Category;
+      const amount = (expense.AmountBaisa / 1000).toFixed(3);
+
+      let html = '<table class="detail-table">';
+      html += '<tr><td>ID</td><td class="mono">' + expense.ID + '</td></tr>';
+      html += '<tr><td>Date</td><td>' + expense.Date + '</td></tr>';
+      html += '<tr><td>Category</td><td>' + category + '</td></tr>';
+      html += '<tr><td>Amount</td><td class="amount-cell">' + amount + ' OMR</td></tr>';
+      html += '<tr><td>Vendor</td><td>' + expense.Vendor + '</td></tr>';
+      html += '<tr><td>Description</td><td>' + expense.Description + '</td></tr>';
+      html += '<tr><td>Recorded By</td><td><strong>' + expense.RecordedByFriendly +
+        '</strong><br><span class="mono" style="font-size:0.75em;">' +
+        friendlyIssuer(expense.RecordedBy) + '</span></td></tr>';
+      html += '<tr><td>Timestamp</td><td>' + formatTimestamp(expense.Timestamp) + '</td></tr>';
+      if (expense.ReversalOf) {
+        html += '<tr><td>Reverses</td><td><a href="expense.html?id=' +
+          encodeURIComponent(expense.ReversalOf) + '">' + expense.ReversalOf + '</a></td></tr>';
+      }
+      html += '</table>';
+      document.getElementById('detail-container').innerHTML = html;
+
+      let historyHtml = '<tr><th>Transaction ID</th><th>Timestamp</th></tr>';
+      expense.History.forEach(function(h) {
+        historyHtml += '<tr><td class="mono">' + h.txId + '</td><td>' +
+          formatHistoryTimestamp(h.timestamp) + '</td></tr>';
+      });
+      document.getElementById('history-table').innerHTML = historyHtml;
+      document.getElementById('history-card').style.display = 'block';
+    }
+
+    loadData().catch(function(err) {
+      document.getElementById('detail-container').innerHTML =
+        '<div class="alert alert-error">Failed to load: ' + err.message + '</div>';
+    });
+  </script>
+</body>
+</html>

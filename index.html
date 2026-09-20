@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Ledger - Demo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .demo-banner {
+      background: #fff3cd;
+      color: #664d03;
+      border: 1px solid #ffe69c;
+      padding: 10px 32px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .demo-banner strong { color: #664d03; }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    <strong>Demo snapshot</strong> - this page shows a periodically-published, read-only copy of the ledger.
+    Last updated: <span id="exported-at">loading...</span>
+  </div>
+
+  <div class="topbar">
+    <span class="brand">Expense<span>Ledger</span></span>
+    <div class="session-info">
+      <span class="role-badge">Investor View (Demo)</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="actions-row">
+        <h1>All Expenses</h1>
+        <a href="blockchain.html" class="btn btn-secondary">Blockchain Info</a>
+      </div>
+
+      <div id="table-container">
+        <div class="empty-state">Loading...</div>
+      </div>
+
+      <div class="summary-row" id="summary-row" style="display: none; margin-top: 20px; margin-bottom: 0;">
+        <div class="summary-box">
+          <div class="summary-label">Total Recorded</div>
+          <div class="summary-value" id="total-value"></div>
+        </div>
+        <div class="summary-box">
+          <div class="summary-label">Entries</div>
+          <div class="summary-value" id="entries-value"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function formatTimestamp(iso) {
+      const d = new Date(iso);
+      return d.toLocaleString('en-GB', {
+        year: 'numeric', month: 'short', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZoneName: 'short',
+      });
+    }
+
+    async function loadData() {
+      const res = await fetch('data/expenses.json');
+      const data = await res.json();
+
+      document.getElementById('exported-at').textContent = formatTimestamp(data.exportedAt);
+
+      const container = document.getElementById('table-container');
+      if (data.expenses.length === 0) {
+        container.innerHTML = '<div class="empty-state">No expenses recorded yet.</div>';
+      } else {
+        let html = '<table><tr><th>Date</th><th>Category</th><th>Vendor</th>' +
+          '<th>Amount (OMR)</th><th>Description</th><th></th></tr>';
+        data.expenses.forEach(function(e) {
+          const category = e.Category === 'Other' ? e.CategoryOther : e.Category;
+          const amount = (e.AmountBaisa / 1000).toFixed(3);
+          html += '<tr>' +
+            '<td>' + e.Date + '</td>' +
+            '<td>' + category + '</td>' +
+            '<td>' + e.Vendor + '</td>' +
+            '<td class="amount-cell">' + amount + '</td>' +
+            '<td>' + e.Description + '</td>' +
+            '<td><a href="expense.html?id=' + encodeURIComponent(e.ID) + '">Details</a></td>' +
+            '</tr>';
+        });
+        html += '</table>';
+        container.innerHTML = html;
+      }
+
+      document.getElementById('total-value').textContent =
+        (data.totalBaisa / 1000).toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + ' OMR';
+      document.getElementById('entries-value').textContent = data.expenseCount;
+      document.getElementById('summary-row').style.display = 'flex';
+    }
+
+    loadData().catch(function(err) {
+      document.getElementById('table-container').innerHTML =
+        '<div class="alert alert-error">Failed to load ledger data: ' + err.message + '</div>';
+    });
+  </script>
+</body>
+</html>
