@@ -1,13 +1,40 @@
 {
-  "exportedAt": "2026-09-20T17:12:56.177Z",
+  "exportedAt": "2026-09-20T17:16:51.424Z",
   "chainInfo": {
-    "height": 10,
-    "currentBlockHash": "jgSp2jZ3/u38fJ/LYfc8hMbmQZkOjDpzVs1fLbia8W4=",
-    "previousBlockHash": "tecy2BINZtKkk2HiO9DgSmxzou0kp/FWl9Y+YWro08w="
+    "height": 11,
+    "currentBlockHash": "elxp3szu94BnfhkvsuHvQMFCALcdD/JEmgAtuduQLV8=",
+    "previousBlockHash": "jgSp2jZ3/u38fJ/LYfc8hMbmQZkOjDpzVs1fLbia8W4="
   },
-  "totalBaisa": 870000000,
-  "expenseCount": 4,
+  "totalBaisa": 875000000,
+  "expenseCount": 5,
   "expenses": [
+    {
+      "AmountBaisa": 5000000,
+      "Category": "Maintenance",
+      "CategoryOther": "",
+      "Currency": "OMR",
+      "Date": "2026-09-17",
+      "Description": "General maintenance",
+      "DocumentHash": "",
+      "ID": "e97662b1-6c4f-43c5-9ace-6903083ed867",
+      "RecordedBy": "x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com",
+      "ReversalOf": "",
+      "Timestamp": "2026-09-20T17:15:36.000Z",
+      "Vendor": "Maintenance Company",
+      "docType": "expense",
+      "RecordedByFriendly": "financeofficer1",
+      "History": [
+        {
+          "txId": "ac2a79f29417383cab2c8da11e01245da44c00a6eaf1aaf80870188903ea2af6",
+          "timestamp": {
+            "seconds": 1789924536,
+            "nanos": 889000000
+          },
+          "isDelete": false,
+          "value": "{\"docType\":\"expense\",\"ID\":\"e97662b1-6c4f-43c5-9ace-6903083ed867\",\"Date\":\"2026-09-17\",\"Category\":\"Maintenance\",\"CategoryOther\":\"\",\"AmountBaisa\":5000000,\"Currency\":\"OMR\",\"Vendor\":\"Maintenance Company\",\"Description\":\"General maintenance\",\"DocumentHash\":\"\",\"RecordedBy\":\"x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com\",\"Timestamp\":\"2026-09-20T17:15:36.000Z\",\"ReversalOf\":\"\"}"
+        }
+      ]
+    },
     {
       "AmountBaisa": 20000000,
       "Category": "Marketing & Sales",
