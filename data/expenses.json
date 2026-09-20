@@ -1,13 +1,40 @@
 {
-  "exportedAt": "2026-09-20T16:47:26.284Z",
+  "exportedAt": "2026-09-20T17:08:29.684Z",
   "chainInfo": {
-    "height": 8,
-    "currentBlockHash": "GpFTKhZKMYlarbFq1bNN62EtErHWu3Ld+bi5en30u/c=",
-    "previousBlockHash": "x6OUibhkwBiJ+SB9/JBwxTPgHBe+eQqghLx3mz6eAn0="
+    "height": 9,
+    "currentBlockHash": "tecy2BINZtKkk2HiO9DgSmxzou0kp/FWl9Y+YWro08w=",
+    "previousBlockHash": "GpFTKhZKMYlarbFq1bNN62EtErHWu3Ld+bi5en30u/c="
   },
-  "totalBaisa": 550000000,
-  "expenseCount": 2,
+  "totalBaisa": 850000000,
+  "expenseCount": 3,
   "expenses": [
+    {
+      "AmountBaisa": 300000000,
+      "Category": "Design & Engineering",
+      "CategoryOther": "",
+      "Currency": "OMR",
+      "Date": "2026-09-20",
+      "Description": "Design work",
+      "DocumentHash": "",
+      "ID": "8e6e27e9-0af7-4317-86a2-6386f8a9d79d",
+      "RecordedBy": "x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com",
+      "ReversalOf": "",
+      "Timestamp": "2026-09-20T17:06:24.000Z",
+      "Vendor": "MEC",
+      "docType": "expense",
+      "RecordedByFriendly": "financeofficer1",
+      "History": [
+        {
+          "txId": "56f2aca8b72576a19d190bb05b1466668511298c7d77c95c9d4036f421d99e7a",
+          "timestamp": {
+            "seconds": 1789923984,
+            "nanos": 15000000
+          },
+          "isDelete": false,
+          "value": "{\"docType\":\"expense\",\"ID\":\"8e6e27e9-0af7-4317-86a2-6386f8a9d79d\",\"Date\":\"2026-09-20\",\"Category\":\"Design & Engineering\",\"CategoryOther\":\"\",\"AmountBaisa\":300000000,\"Currency\":\"OMR\",\"Vendor\":\"MEC\",\"Description\":\"Design work\",\"DocumentHash\":\"\",\"RecordedBy\":\"x509::/C=US/ST=North Carolina/O=Hyperledger/OU=client/CN=financeofficer1::/C=US/ST=North Carolina/L=Durham/O=org1.example.com/CN=ca.org1.example.com\",\"Timestamp\":\"2026-09-20T17:06:24.000Z\",\"ReversalOf\":\"\"}"
+        }
+      ]
+    },
     {
       "AmountBaisa": 50000000,
       "Category": "Permits & Licensing",
